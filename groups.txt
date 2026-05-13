@@ -4,3 +4,4 @@ Bheramara,Ishwardi,Natore,Santahar
 Akkelpur,Joypurhat
 Birampur,Fulbari,Parbatipur,Saidpur,Nilphamari
 Domar,Chilahati
+parbatipur,saidpur

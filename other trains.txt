@@ -1,0 +1,27 @@
+Kurigram express:
+Dhaka Biman_Bandar Natore Madhnagar Santahar Joypurhat Parbatipur Badarganj Rangpur Kaunia Kurigram
+
+Rangpur express:
+Dhaka Biman_Bandar Ibrahimabad Chatmohar Natore Santahar Talora Bogura Sonatola Bonar_Para Gaibandha Bamondanga Pirgacha Kaunia Kurigram Rangpur
+
+
+Lalmoni express:
+Dhaka Biman_Bandar Joydebpur Tangail Ibrahimabad SH_M_Monsur_Ali Ullapara Boral_Bridge Azim_Nagar Natore Santahar Bogura Sonatola Bonar_Para Gaibandha Bamondanga Pirgacha Kaunia Teesta_Junction Lalmonirhat
+
+Burimari express:
+Dhaka Biman_Bandar Ishwardi_Bypass Natore Santahar Bogura Mahimaganj Bonar_Para Gaibandha Kaunia Lalmonirhat Kankina Tushbhandar Hatibandha Barkhata Patgram Burimari
+
+
+Groups from dhaka to home or vice versa:
+Dhaka Biman_Bandar
+Kaunia Lalmonirhat Kurigram Rangpur Parbatipur Gaibandha Badarganj Teesta_Junction
+
+
+Groups from Khulna to home or vice versa:
+KhulnaJashore
+Mubarakganj,Kotchandpur,Darshana_Halt,Chuadanga,Alamdanga,Poradaha
+Bheramara,Ishwardi,Natore,Santahar
+Akkelpur,Joypurhat
+Birampur,Fulbari,Parbatipur,Saidpur,Nilphamari
+Domar,Chilahati
+parbatipur,saidpur

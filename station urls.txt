@@ -42,6 +42,11 @@ Group 6:
 
 
 
+Groups from dhaka to home:
+Dhaka Biman_Bandar
+Kaunia Lalmonirhat Kurigram Rangpur Parbatipur Gaibandha Badarganj Teesta_Junction
+
+
 
 All Possible URLs :
 

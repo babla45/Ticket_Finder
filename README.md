@@ -1,228 +1,96 @@
-````md id="readme_md"
 # Railway Cartesian Product URL Generator
 
-A Windows Batch (`.bat`) tool that automatically generates and opens Bangladesh Railway e-ticket search URLs using Cartesian products between station groups.
+A PowerShell (`.ps1`) tool that automatically generates and opens Bangladesh Railway e-ticket search URLs using Cartesian products between station groups.
 
-The program reads station groups from a text file and allows the user to select combinations like:
-
-```text
-1x5
-````
-
-which means:
-
-* every station in Group 1
-* paired with every station in Group 5
-
-The generated URLs are automatically opened in Microsoft Edge tabs.
+This program reads station groups from a text file, supports dynamic travel date selection (current day + 10 days), and allows the user to select combinations.
 
 ---
 
-# Features
+## Features
 
-* Dynamic station group loading from `groups.txt`
-* Cartesian product generation between groups
-* Automatic URL generation
-* Opens all generated URLs in Microsoft Edge
-* Simple command-line interface
-* No hardcoded station lists
-* Easy to extend with more groups
+* **Dynamic Dates:** Automatically generates the next 10 days of dates for selection.
+* **Pre-defined Groups:** Load available groups dynamically from `groups.txt`.
+* **Custom Matrix Selection (`cm`):** Dynamically build temporary groups from a visual matrix of all stations (supports index ranges, e.g., `1-5`).
+* **Cartesian Product Generator:** E.g., `1 2x5` searches every station in Group 2 against every station in Group 5 for Date Index 1.
+* **Smart Parsing:** Automatically handles station names separated by commas or spaces and properly URL-encodes them.
+* **Auto-Opening:** Safely opens all generated URLs in Microsoft Edge tabs.
 
 ---
 
-# File Structure
+## File Structure
 
 ```text
 project/
 │
-├── gui.bat
+├── ticket_finder.ps1
 ├── groups.txt
 └── README.md
 ```
 
 ---
 
-# groups.txt Format
+## groups.txt Format
 
-One group per line.
-
-Stations inside a group are separated by commas.
+One group per line. Stations inside a group can be separated by commas or spaces.
 
 Example:
-
 ```text
-Khulna,Jashore
-Mubarakganj,Kotchandpur,Darshana_Halt,Chuadanga
-Bheramara,Ishwardi,Natore,Santahar
-Birampur,Fulbari,Parbatipur,Saidpur
+Khulna
+Jashore,Mubarakganj,Kotchandpur
+Bheramara Ishwardi Natore Santahar
+Akkelpur,Joypurhat
+Birampur,Fulbari Parbatipur Saidpur
 ```
 
 ---
 
-# Important Note About Spaces
+## How To Run
 
-Batch `for` loops split text using spaces.
+1. Open PowerShell and navigate to the folder.
+2. Run the script:
+   ```powershell
+   .\gui.ps1
+   ```
+3. The program will display the **next 10 days** and the **available groups**.
 
-So station names with spaces should use:
+### Basic Usage
 
-* underscores `_`
-* or `%20`
+When prompted `Enter date index and combination (example 1 2x3) or 'cm' for custom`:
+- To select Date #2, and compare Group 1 to Group 3, type: `2 1x3`
 
-Example:
+### Custom Matrix Mode
 
-```text
-Darshana_Halt
-```
-
-instead of:
-
-```text
-Darshana Halt
-```
-
----
-
-# How To Run
-
-1. Put both files in the same folder:
-
-   * `cartesian_gui.bat`
-   * `groups.txt`
-
-2. Double-click:
-
-   * `cartesian_gui.bat`
-
-3. The program will display all available groups.
-
-Example:
-
-```text
-1 = Khulna,Jashore
-2 = Mubarakganj,Kotchandpur
-3 = Bheramara,Ishwardi
-```
-
-4. Enter a combination:
-
-```text
-2x3
-```
-
-5. The script will:
-
-   * generate all route combinations
-   * open all URLs in Edge tabs
+If you don't want to use predefined groups:
+1. Type `cm` and press Enter.
+2. The script lists all unique stations in a clean 5-column table.
+3. It asks for two custom groups, formatted as indexes separated by a comma.
+   - Example Input: `1 3 5-7, 8 10`
+   - Group 1 becomes stations at index 1, 3, 5, 6, 7.
+   - Group 2 becomes stations at index 8 and 10.
+4. Enter the date index and product (e.g., `2 1x2`) targeting your temporarily generated custom groups!
 
 ---
 
-# Example Cartesian Product
+## URL Format
 
-If:
-
-Group 1:
-
-```text
-Khulna,Jashore
-```
-
-Group 5:
-
-```text
-Birampur,Fulbari
-```
-
-Input:
-
-```text
-1x5
-```
-
-Generated routes:
-
-```text
-Khulna -> Birampur
-Khulna -> Fulbari
-Jashore -> Birampur
-Jashore -> Fulbari
-```
-
----
-
-# URL Format
-
-Generated URLs follow:
-
+Generated URLs are correctly encoded and follow:
 ```text
 https://eticket.railway.gov.bd/booking/train/search?fromcity=SOURCE&tocity=DESTINATION&doj=DATE&class=S_CHAIR
 ```
 
 ---
 
-# Configuration
+## Configuration
 
-Inside the batch file:
-
-```bat
-set date=23-May-2026
-set class=S_CHAIR
-```
-
-You can change:
-
-* travel date
-* seat class
+Inside the `gui.ps1` script, you can change:
+- `$class = "S_CHAIR"`  (Travel class)
+- The browser being launched: `Start-Process "msedge"` (change to `"chrome"` or `"firefox"`)
+- Tab opening delay: `Start-Sleep -Seconds 1`
 
 ---
 
-# Browser
-
-The script currently opens links using:
-
-```bat
-start msedge
-```
-
-You can replace:
-
-* `msedge`
-  with:
-* `chrome`
-* `firefox`
-* or another browser
-
----
-
-# Delay Between Tabs
-
-The script uses:
-
-```bat
-timeout /t 1 >nul
-```
-
-to avoid browser lag/crashes while opening many tabs.
-
-You can:
-
-* increase delay
-* decrease delay
-* or remove it
-
----
-
-# Use Cases
-
-* Railway ticket checking
-* Bulk route opening
-* Route comparison
-* Seat availability monitoring
-* Automated ticket search workflows
-
----
-
-# Requirements
+## Requirements
 
 * Windows
-* Microsoft Edge installed
-* Command Prompt enabled
+* PowerShell
+* Microsoft Edge (default)

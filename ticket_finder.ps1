@@ -25,7 +25,7 @@ $groupLines = Get-Content -Path "groups.txt"
 $count = 1
 foreach ($line in $groupLines) {
     if (-not [string]::IsNullOrWhiteSpace($line)) {
-        $groups[$count] = $line -split "," | ForEach-Object { $_.Trim() }
+        $groups[$count] = $line -split "[,| ]+" | ForEach-Object { $_.Trim() } | Where-Object { $_ -ne "" }
         Write-Host "$count = $line"
         
         foreach ($st in $groups[$count]) {
@@ -122,9 +122,11 @@ if ($inputStr -match $regex) {
     foreach ($from in $list1) {
         foreach ($to in $list2) {
             Write-Host "$from -> $to"
-            $url = "https://eticket.railway.gov.bd/booking/train/search?fromcity=$from&tocity=$to&doj=$selectedDate&class=$class"
+            $safeFrom = [uri]::EscapeDataString($from)
+            $safeTo = [uri]::EscapeDataString($to)
+            $url = "https://eticket.railway.gov.bd/booking/train/search?fromcity=$safeFrom&tocity=$safeTo&doj=$selectedDate&class=$class"
             Write-Host $url
-            Start-Process "msedge" -ArgumentList $url
+            Start-Process "msedge" -ArgumentList "`"$url`""
             Start-Sleep -Seconds 1
         }
     }

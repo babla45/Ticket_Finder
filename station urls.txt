@@ -1,0 +1,135 @@
+
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Khulna&tocity=Saidpur&doj=23-May-2026&class=S_CHAIR
+
+Group 1:
+1. Khulna
+2. Jashore
+
+
+Group 2:
+1. Mubarakganj
+2. Kotchandpur
+3. Darshana Halt
+4. Chuadanga
+5. Alamdanga
+6. Poradaha
+
+
+Group 3:
+1. Bheramara
+2. Ishwardi
+3. Natore
+4. Santahar
+
+
+Group 4:
+1. Akkelpur
+2. Joypurhat
+
+
+Group 5:
+1. Birampur
+2. Fulbari
+3. Parbatipur
+4. Saidpur
+5. Nilphamari
+
+
+
+Group 6:
+1. Domar
+2. Chilahati
+
+
+
+
+All Possible URLs :
+
+From Khulna:
+Group 1x Group 5
+
+1. https://eticket.railway.gov.bd/booking/train/search?fromcity=Khulna&tocity=Birampur&doj=23-May-2026&class=S_CHAIR
+
+
+2. https://eticket.railway.gov.bd/booking/train/search?fromcity=Khulna&tocity=Fulbari&doj=23-May-2026&class=S_CHAIR
+
+
+3. https://eticket.railway.gov.bd/booking/train/search?fromcity=Khulna&tocity=Parbatipur&doj=23-May-2026&class=S_CHAIR
+
+
+4. https://eticket.railway.gov.bd/booking/train/search?fromcity=Khulna&tocity=Saidpur&doj=23-May-2026&class=S_CHAIR
+
+
+5. https://eticket.railway.gov.bd/booking/train/search?fromcity=Khulna&tocity=Nilphamari&doj=23-May-2026&class=S_CHAIR
+
+
+
+From Jashore:
+Group 1x Group 5
+
+1. https://eticket.railway.gov.bd/booking/train/search?fromcity=Jashore&tocity=Birampur&doj=23-May-2026&class=S_CHAIR
+
+
+2. https://eticket.railway.gov.bd/booking/train/search?fromcity=Jashore&tocity=Fulbari&doj=23-May-2026&class=S_CHAIR
+
+
+3. https://eticket.railway.gov.bd/booking/train/search?fromcity=Jashore&tocity=Parbatipur&doj=23-May-2026&class=S_CHAIR
+
+
+4. https://eticket.railway.gov.bd/booking/train/search?fromcity=Jashore&tocity=Saidpur&doj=23-May-2026&class=S_CHAIR
+
+
+5. https://eticket.railway.gov.bd/booking/train/search?fromcity=Jashore&tocity=Nilphamari&doj=23-May-2026&class=S_CHAIR
+
+
+
+Group 1x3 , breaking route:
+From khulna:
+
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Khulna&tocity=Bheramara&doj=23-May-2026&class=S_CHAIR
+
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Khulna&tocity=Ishwardi&doj=23-May-2026&class=S_CHAIR
+
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Khulna&tocity=Natore&doj=23-May-2026&class=S_CHAIR
+
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Khulna&tocity=Santahar&doj=23-May-2026&class=S_CHAIR
+
+
+From Jashore:
+
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Jashore&tocity=Bheramara&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Jashore&tocity=Ishwardi&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Jashore&tocity=Natore&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Jashore&tocity=Santahar&doj=23-May-2026&class=S_CHAIR
+
+
+
+Group 3 × Group 5 (Cartesian product URLs):
+
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Bheramara&tocity=Birampur&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Bheramara&tocity=Fulbari&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Bheramara&tocity=Parbatipur&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Bheramara&tocity=Saidpur&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Bheramara&tocity=Nilphamari&doj=23-May-2026&class=S_CHAIR
+
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Ishwardi&tocity=Birampur&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Ishwardi&tocity=Fulbari&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Ishwardi&tocity=Parbatipur&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Ishwardi&tocity=Saidpur&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Ishwardi&tocity=Nilphamari&doj=23-May-2026&class=S_CHAIR
+
+
+
+
+
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Natore&tocity=Birampur&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Natore&tocity=Fulbari&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Natore&tocity=Parbatipur&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Natore&tocity=Saidpur&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Natore&tocity=Nilphamari&doj=23-May-2026&class=S_CHAIR
+
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Santahar&tocity=Birampur&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Santahar&tocity=Fulbari&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Santahar&tocity=Parbatipur&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Santahar&tocity=Saidpur&doj=23-May-2026&class=S_CHAIR
+https://eticket.railway.gov.bd/booking/train/search?fromcity=Santahar&tocity=Nilphamari&doj=23-May-2026&class=S_CHAIR

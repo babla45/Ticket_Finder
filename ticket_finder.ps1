@@ -6,12 +6,43 @@ Write-Host "=============================="
 Write-Host "   AVAILABLE DATES"
 Write-Host "=============================="
 $dates = @{}
+$lastIdx = 0
 for ($i = 0; $i -le 10; $i++) {
     $dateStr = (Get-Date).AddDays($i).ToString('dd-MMM-yyyy')
     $idx = $i + 1
     $dates[$idx] = $dateStr
     Write-Host "$idx = $dateStr"
+    $lastIdx = $idx
 }
+Write-Host ""
+
+# --- Date Selection ---
+$dateInput = Read-Host "Enter Date (e.g. 1,2 3-5) or [Press Enter to select the last date ($($dates[$lastIdx]))]"
+
+$selectedDates = @()
+if ([string]::IsNullOrWhiteSpace($dateInput)) {
+    # Default to last date
+    $selectedDates += $dates[$lastIdx]
+} else {
+    # Parse tokens like: 1 2 3-5 1,2
+    $tokens = $dateInput -split "[,\s]+" | Where-Object { $_ -ne "" }
+    foreach ($t in $tokens) {
+        if ($t -match "^(\d+)-(\d+)$") {
+            [int]$matches[1]..[int]$matches[2] | ForEach-Object {
+                if ($dates.ContainsKey($_)) { $selectedDates += $dates[$_] }
+            }
+        } elseif ($t -match "^\d+$") {
+            $k = [int]$t
+            if ($dates.ContainsKey($k)) { $selectedDates += $dates[$k] }
+        }
+    }
+    if ($selectedDates.Count -eq 0) {
+        Write-Host "No valid dates found. Defaulting to last date."
+        $selectedDates += $dates[$lastIdx]
+    }
+}
+
+Write-Host "Selected date(s): $($selectedDates -join ', ')"
 Write-Host ""
 
 Write-Host "=============================="
@@ -38,7 +69,7 @@ foreach ($line in $groupLines) {
 }
 Write-Host ""
 
-$inputStr = Read-Host "Enter date index and combination (example 1 2x3) or 'cm' for custom"
+$inputStr = Read-Host "Enter combination (example 2x3) or 'cm' for custom"
 
 if ($inputStr.Trim().ToLower() -eq 'cm') {
     Write-Host ""
@@ -96,7 +127,7 @@ if ($inputStr.Trim().ToLower() -eq 'cm') {
     Write-Host "Custom Group 2: $($customGroup2 -join ', ')"
     Write-Host ""
     
-    $inputStr = Read-Host "Enter date index and combo for custom groups (e.g. 2 1x2)"
+    $inputStr = Read-Host "Enter combo for custom groups (e.g. 1x2)"
     
     # Override groups dictionary mapping to custom 1 and 2
     $groups = @{}
@@ -104,30 +135,30 @@ if ($inputStr.Trim().ToLower() -eq 'cm') {
     $groups[2] = $customGroup2
 }
 
-# Parse final input like "1 2x3"
-$regex = '(\d+)\s+(\d+)[xX](\d+)'
+# Parse final input like "2x3"
+$regex = '(\d+)[xX](\d+)'
 if ($inputStr -match $regex) {
-    $dateIdx = [int]$matches[1]
-    $g1 = [int]$matches[2]
-    $g2 = [int]$matches[3]
+    $g1 = [int]$matches[1]
+    $g2 = [int]$matches[2]
     
-    $selectedDate = $dates[$dateIdx]
     $list1 = $groups[$g1]
     $list2 = $groups[$g2]
     
-    Write-Host ""
-    Write-Host "Opening Cartesian Product for $selectedDate..."
-    Write-Host ""
-    
-    foreach ($from in $list1) {
-        foreach ($to in $list2) {
-            Write-Host "$from -> $to"
-            $safeFrom = [uri]::EscapeDataString($from)
-            $safeTo = [uri]::EscapeDataString($to)
-            $url = "https://eticket.railway.gov.bd/booking/train/search?fromcity=$safeFrom&tocity=$safeTo&doj=$selectedDate&class=$class"
-            Write-Host $url
-            Start-Process "msedge" -ArgumentList "`"$url`""
-            Start-Sleep -Seconds 1
+    foreach ($selectedDate in $selectedDates) {
+        Write-Host ""
+        Write-Host "Opening Cartesian Product for $selectedDate..."
+        Write-Host ""
+        
+        foreach ($from in $list1) {
+            foreach ($to in $list2) {
+                Write-Host "$from -> $to"
+                $safeFrom = [uri]::EscapeDataString($from)
+                $safeTo = [uri]::EscapeDataString($to)
+                $url = "https://eticket.railway.gov.bd/booking/train/search?fromcity=$safeFrom&tocity=$safeTo&doj=$selectedDate&class=$class"
+                Write-Host $url
+                Start-Process "msedge" -ArgumentList "`"$url`""
+                Start-Sleep -Seconds 1
+            }
         }
     }
     
